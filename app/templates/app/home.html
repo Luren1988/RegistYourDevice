@@ -1,0 +1,24 @@
+{% extends 'app/base.html' %}
+  {% block content %}
+  <div class="card-group">
+
+
+      {% for user in users %}
+      {% if user.active %}
+      <div class="col-3 m-auto">
+        <div class="card ">
+          <img class="card-img-top" src='{{user.image}}' alt="ダミーテキスト" min-width="250px" min-height="250px">
+          <div class="card-body">
+            <h4 class="card-title">{{user.name}}</h4>
+            <p class="card-text bu"><a href="{% url 'detail' user.id %}">詳細</a></p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">modified : {{user.modified}}</small>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+
+  </div>
+  {% endblock %}

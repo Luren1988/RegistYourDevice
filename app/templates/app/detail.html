@@ -1,0 +1,84 @@
+{% extends 'app/base.html' %}
+  {% block content %}
+
+  <div class="card">
+    <div class="card-header">
+        <p>{{user.name}}</p>
+    </div>
+    <div class="card-body">
+        <div class="card-columns">
+            <div class="card text-black bg-white mb-3" style="max-width: 18rem;">
+                <div class="card-body">
+                <h5 class="card-title"></h5>
+                <img src='{{publisher.image}}' alt="ダミーテキスト" width="100%" height="250px">
+                {% if publisher.url %}
+                <a  href="{{publisher.url}}" >
+                    <p class="card-text">{{publisher.name}}</p>
+                </a>
+                {% else %}
+                <p class="card-text">{{publisher.name}}</p>
+                {% endif %}
+                </div>
+            </div>
+
+            <div class="card border-dark mb-3" style="max-width: 18rem;">
+                <div class="card-header">デバイス</div>
+                <div class="card-body text-dark">
+                    <p class="card-text">{{publisher.device}}</p>
+                </div>
+            </div>
+
+            <div class="card border-dark mb-3" style="max-width: 18rem;">
+                <div class="card-header">コントローラ</div>
+                <div class="card-body text-dark">
+                    <p class="card-text">{{publisher.controller}}</p>
+                </div>
+            </div>
+
+            <div class="card border-dark mb-3" style="max-width: 18rem;">
+                <div class="card-header">ヘッドフォン</div>
+                <div class="card-body text-dark">
+                    <p class="card-text">{{publisher.sound}}</p>
+                </div>
+            </div>
+
+            <div class="card border-dark mb-3" style="max-width: 18rem;">
+                <div class="card-header">メモ</div>
+                <div class="card-body text-dark">
+                    <p class="card-text">{{publisher.memo}}</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-1">
+                <form action = "{% url 'index' %}" >
+                    <input type="submit" value="戻る" class="btn btn-primary">
+                </form>
+            </div>
+            <div class="col-sm-1">
+                {% if user.is_authenticated %}
+                <form action = "{% url 'update' publisher.pk %}" >
+                    <input type="submit" value="編集" class="btn btn-primary">
+                </form>
+                {% endif %}
+    
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <div class="card-footer">
+        <small class="text-muted">modified : {{user.modified}}</small>
+        
+      </div>
+  </div>
+
+  <!--
+  <p>{{user.game}}</p>
+  -->
+  <p></p>
+  {% endblock %}
